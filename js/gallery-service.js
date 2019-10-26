@@ -4,22 +4,21 @@
 
 let gImgs = createImgs();
 
-let gKeyWords = createKeyWords();
-let gFilterBy;
+let gKeywords = createKeywords();
 
 
-let gMeme = {
-    selectedImgId: getFromStorage('imgDetail'),
-    selectedTxtIdx: 0,
-    txts: [
-        {
-            line: 'I never eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red'
-        }
-    ]
-}
+// let gMeme = {
+//     selectedImgId: getFromStorage('imgDetail'),
+//     selectedTxtIdx: 0,
+//     txts: [
+//         {
+//             line: 'I never eat Falafel',
+//             size: 20,
+//             align: 'left',
+//             color: 'red'
+//         }
+//     ]
+// }
 
 function createImgs() {
     return [
@@ -50,7 +49,11 @@ function createImgs() {
     ]
 }
 
-
+function filterImages(filter){
+    return gImgs.filter(img => {
+        return img.keywords.find(keyword => keyword.includes(filter))
+    })
+}
 
 function getGalleryImgs() {
     return gImgs
@@ -61,7 +64,7 @@ function getImg(currId) {
     window.open("editor.html", "_self");
 }
 
-function createKeyWords() {
+function createKeywords() {
     return {
         'crazy': 2,
         'nature': 1,
@@ -76,20 +79,21 @@ function createKeyWords() {
 }
 
 
-function getKeyWords() {
-    return gKeyWords;
+function getKeywords() {
+    return gKeywords;
 }
 
 function setFilter(txt) {
     gFilterBy = txt;
 }
-function getImgsForDisplay() {
-    if (!gFilterBy) return gImgs;
-    var myRe = new RegExp('^' + `${gFilterBy}`, 'i');
-    var filterImages = gImgs.filter(function (img) {
-        return myRe.exec(img.keywords);
-    })
-    return filterImages;
+function getImgs() {
+    // if (!gFilterBy) return gImgs;
+    // var myRe = new RegExp('^' + `${gFilterBy}`, 'i');
+    // var filterImages = gImgs.filter(function (img) {
+    //     return myRe.exec(img.keywords);
+    // })
+    // return filterImages;
+    return gImgs;
 }
 
 

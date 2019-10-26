@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,54 +8,63 @@
     <title>Meme Controller</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body onload="initMeme()">
-        <header>
-                <div class="logo"> logo</div>
-                <div class="nav">
-                    <ul>
-                        <li><a href="index.html">Gallery</a></li>
-                        <li><a href="#">About</a></li>
-                        <li>History</li>
-                    </ul>
-                </div>
-            </header>
+    <header class="header flex space-between">
+        <img src="img/logo.png" class="logo" alt="">
+        <div class="nav">
+            <ul class="nav-menu flex  ">
+                <li class="nav-menu-item"><a href="index.html">Gallery</a></li>
+                <li class="nav-menu-item"><a href="#">About</a></li>
+            </ul>
+        </div>
+    </header>
     <section class="main-container flex">
-        
-        <canvas class="canvas flex align-center" id="canvas" width="300" height="300"></canvas>
-        <section class= "controls">
+        <section class="canvas-content">
+            <canvas class="canvas flex align-center" id="canvas" width="300" height="300"></canvas>
+        </section>
+        <section class="edit-container">
             <label class="controls-label" for="txtInput">Text Input</label>
             <input class="controls-input" id="txtInput" type="text" onkeyup="onChangeText()" placeholder="Enter Text" />
+            <div class="buttons">
+                <button class="btn" onclick="onChangeFontSize(1)"> <img class="label"
+                        src="icons/increase font - icon.png"></button>
+                <button class="btn" onclick="onChangeFontSize(-1)"> <img class="label"
+                        src="icons/decrease font - icon.png"></button>
 
-            <span class="btn" onclick="onChangeFontSize(1)"> <img class="label" src="icons/increase font - icon.png"></span>
-            <span class="btn" onclick="onChangeFontSize(-1)"> <img class="label" src="icons/decrease font - icon.png"></span>
+                <button class="btn" onclick="onChangePos('up')"> <img class="label" src="icons/up.png"></button>
+                <button class="btn" onclick="onChangePos('down')" class="btn"> <img class="label"
+                        src="icons/down.png"></button>
 
-            <span class="btn" onclick="onChangePos('up')"> <img class="label" src="icons/up.png"></span>
-            <span class="btn" onclick="onChangePos('down')" class="btn"> <img class="label" src="icons/down.png"></span>
+                <label onchange="onEditTxtColor()" for="font-color"><input type="color" id="font-color">
+                    <button class="btn"><img src="icons/paint-board.png" class="label" for="font-color" alt=""
+                            type="color"></button>
+                </label>
+                <label onchange="onChangeStroke()" for="txtStroke"><input type="color" id="txtStroke">
+                    <button class="btn"> <img type='color' src="icons/text-stroke.png" class="label"></button>
+                </label>
 
-            <label onchange="onEditTxtColor()" for="font-color"><input type="color" id="font-color">
-            <span class="btn"><img src="icons/paint-board.png" class="label" for="font-color" alt="" type="color"></span>
-            </label>
-            <label onchange="onChangeStroke()" for="txtStroke"><input type="color" id="txtStroke">
-            <span class="btn"> <img type='color' src="icons/text-stroke.png" class="label"></span>
-            </label>
+                <button onclick="onAlignText('right')" class="btn"> <img class="label"
+                        src="icons/align-to-left.png"></button>
+                <button onclick="onAlignText('center')" class="btn"> <img class="label"
+                        src="icons/center-text-alignment.png"></button>
+                <button onclick="onAlignText('left')" class="btn"> <img class="label"
+                        src="icons/align-to-right.png"></button>
 
-            <span onclick="onAlignText('left')" class="btn"> <img class="label" src="icons/align-to-left.png"></span>
-            <span onclick="onAlignText('center')" class="btn"> <img class="label" src="icons/center-text-alignment.png"></span>
-            <span onclick="onAlignText('right')" class="btn"> <img class="label" src="icons/align-to-right.png"></span>
+                <button class="btn" onclick="onAddLine()"> <img class="label" src="icons/add.png"></button>
+                <button class="btn" onclick="onNext()"> <img class="label" src="icons/up-down.png"></button>
 
-            <!-- <span class="btn" onclick="onAddLine()"> <img  class="label" src="icons/add.png"></span>
-            <span class="btn" onclick="onSwitchLine()" > <img class="label" src="icons/up-down.png"></span> -->
+            </div>
 
             <select id="fontStyle" oninput="onEditTxtStyle(this.value)">
-                    <option value="impact"> Impact </option>
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Helvetica">Helvetica</option>
-                    <option value="Verdana">Verdana</option>
-                    <option value="Tahoma">Tahoma</option>
-                    <option value="Geneva">Geneva</option>
-              </select>
-
+                <option value="impact"> Impact </option>
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Geneva">Geneva</option>
+            </select>
 
         </section>
 
@@ -65,4 +75,5 @@
     <script src="js/editor-service.js"></script>
     <script src="js/main-controller.js"></script>
 </body>
+
 </html>

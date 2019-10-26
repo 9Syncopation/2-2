@@ -1,14 +1,19 @@
 'use strict'
 
+let gCanvas;
+let gCtx;
 
 function init() {
     renderGalleryImgs();
-    renderKeyWords();
+    renderKeywords();
+    document.querySelector('.search-input').addEventListener('input', event => {
+        renderGalleryImgs(event.target.value);
+    })
 }
 
 
-function renderGalleryImgs() {
-    var imgs = getImgsForDisplay()
+function renderGalleryImgs(filter = null) {
+    let imgs = filter ? filterImages(filter) : getImgs();
     let elImgGallery = document.querySelector('.gallery');
     let strHtml = ''
     imgs.map(function (currImg) {
@@ -41,17 +46,16 @@ function renderCanvas() {
     gCanvas.height = img.height
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
     // drawImgInCanvas();
-    let txt = gMeme.txts[gSelectedTxtIdx].line
-    document.querySelector('#txtInput').value = txt;
-    let memeTxt = getMeme().txts
-    memeTxt.map(txt => {
+    let currTxt = getCurrentText();
+    document.querySelector('#txtInput').value = currTxt.line;
+    let allText = getAllTxt();
+    allText.map(txt => {
         gCtx.textAlign = txt.align;
         gCtx.fillStyle = txt.color;
         gCtx.font = txt.size + 'px ' + txt.txtStyle;
-        gCtx.strokeText(txt.line, txt.x, txt.y)
+        gCtx.strokeText(txt.line, gCanvas.width / 2, txt.y, gCanvas.width)
         // debugger;
-        gCtx.fillText(txt.line, txt.x, txt.y);
-        console.log(txt.line);
+        gCtx.fillText(txt.line, gCanvas.width / 2, txt.y, gCanvas.width);
     })
 }
 
@@ -89,34 +93,39 @@ function onAlignText(pos) {
     renderCanvas();
 }
 
-// function onAddLine() {
-//     clearTxt();
-//     let elTxt = document.querySelector('#txtInput').value;
-//     addLine(elTxt);
-//     renderCanvas();
-// }
+function onAddLine() {
+    let elTxt = document.querySelector('#txtInput').value;
+    addText(elTxt);
+    setNextText();
+    elTxt = '';
+    renderCanvas();
+}
 
 function onEditTxtStyle(txtStyle) {
     editTxtStyle(txtStyle);
     renderCanvas();
 }
 
+function onNext() {
+    setNextText();
+}
+
 
 //////// galerry filter/////
-function renderKeyWords() {
-    let currKeyWords = getKeyWords();
+function renderKeywords() {
+    let currKeywords = getKeywords();
     let strHtml = ''
-    for (let currKey in currKeyWords) {
-        let currValue = currKeyWords[currKey];
+    for (let currKey in currKeywords) {
+        let currValue = currKeywords[currKey];
         let wordSize = currValue + 15 + 'px';
-        strHtml += `<li  onclick="onFilterByKeyWord('${currKey}')" style="font-size:${wordSize}">${currKey}</li>`
+        strHtml += `<li class="keyword-item" onclick="onFilterByKeyword('${currKey}')" style="font-size:${wordSize}">${currKey}</li>`
     }
-    document.querySelector('.filter-bar').innerHTML = strHtml
-    console.log(currKeyWords);
+    document.querySelector('.key-words').innerHTML = strHtml
+    console.log(currKeywords);
 
-    
+
 }
-function onFilterByKeyWord(txt) {
+function onFilterByKeyword(txt) {
     // debugger;
     setFilter(txt);
     renderGalleryImgs();
