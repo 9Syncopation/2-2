@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,39 @@
     <title>Index</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<section>
-    <div class="logo"> logo</div>
-    <div class="nav">
-        <ul>
-            <li>Gallery</li>
-            <li>About</li>
-            <li>History</li>
-        </ul>
-    </div>
-</section>
-<body>
-    
+
+<body onload="init()">
+
+    <header>
+        <div class="logo"> logo</div>
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">Gallery</a></li>
+                <li><a href="#">About</a></li>
+                <li>History</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="filter">
+        </section>
+        <section class="gallery">
+
+
+        </section>
+
+
+
+    </main>
 
 
 
 
+
+
+    <script src="js/utils.js"></script>
     <script src="js/gallery-service.js"></script>
     <script src="js/gallery-controller.js"></script>
 </body>
+
 </html>
