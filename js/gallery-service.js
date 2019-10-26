@@ -19,10 +19,6 @@ var gMeme = {
  ]
 }
 
-
-
-
-
 function createImgs() {
     return [
         { id: 1, url: "img/1.jpg", keywords: ['crazy'] },
