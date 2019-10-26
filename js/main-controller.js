@@ -31,7 +31,7 @@ function drawImgInCanvas() {
 
 function renderCanvas() {
 
-    // TODO FIND ELGANT SOLUTION TO THIS IMG_ID.ONLOAD AT DRAW IMAGE
+    // TODO FIND ELGANT SOLUTION TO THIS IMG_ID.ONLOAD AT drawImgInCanvas()
     let currImg = getCurrImg()
     let img = new Image()
     img.src = currImg.url
@@ -52,10 +52,6 @@ function renderCanvas() {
         gCtx.fillText(txt.line, txt.x, txt.y);
         console.log(txt.line);
     })
-    
-
-
-
 }
 
 
@@ -65,3 +61,29 @@ function onChangeText() {
     renderCanvas()
 }
 
+function onChangeFontSize(size) {
+    changeFontSize(size);
+    renderCanvas();
+}
+
+function onChangePos(pos) {
+    changePos(pos);
+    renderCanvas();
+}
+
+function onEditTxtColor() {
+    let elColor = document.querySelector('#font-color').value
+    editTxtColor(elColor);
+    renderCanvas()
+}
+
+function onChangeStroke() {
+    let elStroke = document.querySelector("#txtStroke").value;
+    ChangeStroke(elStroke)
+    renderCanvas();
+}
+
+function onAlignText(pos) {
+    alignText(pos);
+    renderCanvas();
+}

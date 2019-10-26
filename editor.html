@@ -18,13 +18,30 @@
                     </ul>
                 </div>
             </header>
-    <section class="main-container">
+    <section class="main-container flex">
         
-        <canvas class="canvas" id="canvas" width="300" height="300"></canvas>
+        <canvas class="canvas flex align-center" id="canvas" width="300" height="300"></canvas>
         <section class= "controls">
             <label class="controls-label" for="txtInput">Text Input</label>
             <input class="controls-input" id="txtInput" type="text" onkeyup="onChangeText()" placeholder="Enter Text" />
 
+            <span class="btn" onclick="onChangeFontSize(1)"> <img class="label" src="icons/increase font - icon.png"></span>
+            <span class="btn" onclick="onChangeFontSize(-1)"> <img class="label" src="icons/decrease font - icon.png"></span>
+
+            <span class="btn" onclick="onChangePos('up')"> <img class="label" src="icons/up.png"></span>
+            <span class="btn" onclick="onChangePos('down')" class="btn"> <img class="label" src="icons/down.png"></span>
+
+            <label onchange="onEditTxtColor()" for="font-color"><input type="color" id="font-color">
+            <span class="btn"><img src="icons/paint-board.png" class="label" for="font-color" alt="" type="color"></span>
+            </label>
+            <label onchange="onChangeStroke()" for="txtStroke"><input type="color" id="txtStroke">
+            <span class="btn"> <img type='color' src="icons/text-stroke.png" class="label"></span>
+            </label>
+
+            <span onclick="onAlignText('left')" class="btn"> <img class="label" src="icons/align-to-left.png"></span>
+            <span onclick="onAlignText('center')" class="btn"> <img class="label" src="icons/center-text-alignment.png"></span>
+            <span onclick="onAlignText('right')" class="btn"> <img class="label" src="icons/align-to-right.png"></span>
+           
         </section>
 
 

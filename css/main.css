@@ -25,9 +25,43 @@
 .gallery img:hover {
     transform: scale(1.1);
 }
+#canvas {
+  border: 3px solid blueviolet;
+  flex-direction: row;
+  width: 100%;
+  flex: 1;
+}
 
+.btn {
+  width: 60px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  flex-direction: column;
+  display: inline-flex;
+  /* padding: 10px; */
+  border-radius: 12px;
+  background-color: #ffffff
+}
+.controls {
+  background-color: #e3e3e3;
+  flex: 1;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+}
+.label {
+  height: 35px;
+  width: 35px;
+}
 
+#font-color {
+  display: none;
+}
 
+#txtStroke {
+  display: none;
+}
 
 
 /* //////////////nav bar///////////// */
@@ -95,4 +129,17 @@
 
 
 /* ////////////////////////helpers///////////////// */
+/* ///////////////*****helpers *******/
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
 
