@@ -41,7 +41,6 @@ function getAllTxt() {
 
 function changeText(elText) {
     gMeme.txts[gMeme.selectedTxtIdx].line = elText
-
 }
 
 function changeFontSize(size) {
@@ -69,21 +68,7 @@ function ChangeStroke(color) {
 }
 
 function alignText(pos) {
-    // let currentTxt = gMeme.txts[gMeme.selectedTxtIdx].line;
-    // let textWidth = gCtx.measureText(currentTxt).width;
-    // let x
-    // if (pos === 'center') {
-    //     x = (gCanvas.width / 2) - (textWidth / 2)
-    // }
-    // if (pos === 'left') {
-    //     x = 20;
-    // }
-    // if (pos === 'right') {
-    //     x = gCanvas.width - textWidth - 10;
-    // }
-    // gMeme.txts[gMeme.selectedTxtIdx].x = x;
-
-    gMeme.txts[gMeme.selectedTxtIdx].align = pos;
+     gMeme.txts[gMeme.selectedTxtIdx].align = pos;
 }
 
 function addText(line) {
@@ -100,7 +85,5 @@ function addText(line) {
 }
 
 function editTxtStyle(txtStyle) {
-
     gMeme.txts[gMeme.selectedTxtIdx].txtStyle = txtStyle
-
 }

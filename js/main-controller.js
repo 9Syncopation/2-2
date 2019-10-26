@@ -37,7 +37,7 @@ function drawImgInCanvas() {
 
 function renderCanvas() {
 
-    // TODO FIND ELGANT SOLUTION TO THIS IMG_ID.ONLOAD AT drawImgInCanvas()
+   
     let currImg = getCurrImg()
     let img = new Image()
     img.src = currImg.url
@@ -45,7 +45,6 @@ function renderCanvas() {
     gCanvas.width = img.width
     gCanvas.height = img.height
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-    // drawImgInCanvas();
     let currTxt = getCurrentText();
     document.querySelector('#txtInput').value = currTxt.line;
     let allText = getAllTxt();
@@ -54,7 +53,6 @@ function renderCanvas() {
         gCtx.fillStyle = txt.color;
         gCtx.font = txt.size + 'px ' + txt.txtStyle;
         gCtx.strokeText(txt.line, gCanvas.width / 2, txt.y, gCanvas.width)
-        // debugger;
         gCtx.fillText(txt.line, gCanvas.width / 2, txt.y, gCanvas.width);
     })
 }
@@ -126,7 +124,6 @@ function renderKeywords() {
 
 }
 function onFilterByKeyword(txt) {
-    // debugger;
     setFilter(txt);
     renderGalleryImgs();
 }

@@ -1,24 +1,10 @@
 'use strict'
 
 
-
 let gImgs = createImgs();
 
 let gKeywords = createKeywords();
 
-
-// let gMeme = {
-//     selectedImgId: getFromStorage('imgDetail'),
-//     selectedTxtIdx: 0,
-//     txts: [
-//         {
-//             line: 'I never eat Falafel',
-//             size: 20,
-//             align: 'left',
-//             color: 'red'
-//         }
-//     ]
-// }
 
 function createImgs() {
     return [
@@ -77,8 +63,6 @@ function createKeywords() {
         'movie': 4,
     }
 }
-
-
 function getKeywords() {
     return gKeywords;
 }
@@ -87,26 +71,8 @@ function setFilter(txt) {
     gFilterBy = txt;
 }
 function getImgs() {
-    // if (!gFilterBy) return gImgs;
-    // var myRe = new RegExp('^' + `${gFilterBy}`, 'i');
-    // var filterImages = gImgs.filter(function (img) {
-    //     return myRe.exec(img.keywords);
-    // })
-    // return filterImages;
-    return gImgs;
+     return gImgs;
 }
 
-
-
-
-// function imgsMap() {
-//     return gImgs.reduce(function (key, img) {
-//         for (var i = 0; i < img.keywords.length; i++) {
-//             if (!key[img.keywords[i]]) key[img.keywords[i]] = img.url;
-//             else key[img.keywords[i]] += img.url;
-//         }
-//         return key;
-//     }, {})
-// }
 
 
