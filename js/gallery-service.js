@@ -8,17 +8,17 @@ let gKeyWords = createKeyWords();
 let gFilterBy;
 
 
-var gMeme = {
- selectedImgId: getFromStorage('imgDetail'),
- selectedTxtIdx: 0,
- txts: [
- {
- line: 'I never eat Falafel',
- size: 20,
- align: 'left',
- color: 'red'
- }
- ]
+let gMeme = {
+    selectedImgId: getFromStorage('imgDetail'),
+    selectedTxtIdx: 0,
+    txts: [
+        {
+            line: 'I never eat Falafel',
+            size: 20,
+            align: 'left',
+            color: 'red'
+        }
+    ]
 }
 
 function createImgs() {
@@ -52,19 +52,18 @@ function createImgs() {
 
 
 
-function getGalleryImgs (){
+function getGalleryImgs() {
     return gImgs
 }
 
-function getImg(currId){
-    saveToStorage('imgDetail',currId)
-    window.open("editor.html","_self"); 
+function getImg(currId) {
+    saveToStorage('imgDetail', currId)
+    window.open("editor.html", "_self");
 }
 
 function createKeyWords() {
     return {
         'crazy': 2,
-        'dancing': 1,
         'nature': 1,
         'kissing': 1,
         'dogs': 3,

@@ -5,7 +5,7 @@ let gCtx
 let gCurrTxt
 let gSelectedTxtIdx = gMeme.selectedTxtIdx
 
-var gMeme = {
+ gMeme = {
     selectedImgId: getFromStorage('imgDetail'),
     selectedTxtIdx: 0,
     txts: [
@@ -15,6 +15,7 @@ var gMeme = {
             align: 'left',
             color: 'red',
             stroke: 'black',
+            txtStyle: 'impact',
             x: 20,
             y: 40,
         }

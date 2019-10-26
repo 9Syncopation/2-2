@@ -8,7 +8,7 @@ function init() {
 
 
 function renderGalleryImgs() {
-    var imgs = getGalleryImgs()
+    var imgs = getImgsForDisplay()
     let elImgGallery = document.querySelector('.gallery');
     let strHtml = ''
     imgs.map(function (currImg) {
@@ -108,11 +108,16 @@ function renderKeyWords() {
     let strHtml = ''
     for (let currKey in currKeyWords) {
         let currValue = currKeyWords[currKey];
-        let wordSize = currValue * 1 + 'rem';
+        let wordSize = currValue + 15 + 'px';
         strHtml += `<li  onclick="onFilterByKeyWord('${currKey}')" style="font-size:${wordSize}">${currKey}</li>`
     }
     document.querySelector('.filter-bar').innerHTML = strHtml
     console.log(currKeyWords);
 
     
+}
+function onFilterByKeyWord(txt) {
+    // debugger;
+    setFilter(txt);
+    renderGalleryImgs();
 }
