@@ -87,3 +87,15 @@ function onAlignText(pos) {
     alignText(pos);
     renderCanvas();
 }
+
+// function onAddLine() {
+//     clearTxt();
+//     let elTxt = document.querySelector('#txtInput').value;
+//     addLine(elTxt);
+//     renderCanvas();
+// }
+
+function onEditTxtStyle(txtStyle) {
+    editTxtStyle(txtStyle);
+    renderCanvas();
+}

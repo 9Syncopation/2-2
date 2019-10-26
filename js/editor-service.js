@@ -15,8 +15,8 @@ var gMeme = {
             align: 'left',
             color: 'red',
             stroke: 'black',
-            x:20,
-            y:40,
+            x: 20,
+            y: 40,
         }
     ]
 }
@@ -42,7 +42,7 @@ function getMeme() {
 
 function changeText(elText) {
     gMeme.txts[gSelectedTxtIdx].line = elText
-    
+
 }
 
 function changeFontSize(size) {
@@ -51,9 +51,9 @@ function changeFontSize(size) {
     else diffSize = -1
 
     gMeme.txts[gSelectedTxtIdx].size += diffSize
-   }
+}
 
-   function changePos(pos) {
+function changePos(pos) {
     let diffY = 3;
     if (pos === 'up') gMeme.txts[gSelectedTxtIdx].y -= diffY;
     else gMeme.txts[gSelectedTxtIdx].y += diffY;
@@ -74,7 +74,7 @@ function alignText(pos) {
     let textWidth = gCtx.measureText(currentTxt).width;
     let x
     if (pos === 'center') {
-           x = (gCanvas.width / 2) - (textWidth / 2)
+        x = (gCanvas.width / 2) - (textWidth / 2)
     }
     if (pos === 'left') {
         x = 20;
@@ -83,4 +83,43 @@ function alignText(pos) {
         x = gCanvas.width - textWidth - 10;
     }
     gMeme.txts[gSelectedTxtIdx].x = x;
+}
+
+// function addLine(txt) {
+//     if (gSelectedTxtIdx === 2) return;
+//     gMeme.selectedTxtIdx += 1;
+//     let y;
+//     if (gSelectedTxtIdx === 1) {
+//         y = gCanvas.height - 20;
+//     }
+//     if (gSelectedTxtIdx === 2) {
+//         y = gCanvas.height / 2;
+//     }
+
+//     addTxt(txt, 20, y);
+// }
+
+// function clearTxt() {
+//     let elTxt = document.querySelector('#txtInput');
+//     elTxt.value = '';
+// }
+
+// function addTxt(text, x, y) {
+//     let txt = {
+//         line: text,
+//         stroke: 'black',
+//         font: 'Impact',
+//         size: 32,
+//         align: 'bottom',
+//         color: 'white',
+//         x: 30,
+//         y: 30,
+//     }
+//     gMeme["txts"].push(txt);
+// }
+
+function editTxtStyle(txtStyle) {
+
+    gMeme.txts[gSelectedTxtIdx].txtStyle = txtStyle
+
 }
