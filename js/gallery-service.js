@@ -4,7 +4,9 @@
 
 let gImgs = createImgs();
 
-var gKeywords = {'happy': 12,'funny puk': 1}
+let gKeyWords = createKeyWords();
+let gFilterBy;
+
 
 var gMeme = {
  selectedImgId: getFromStorage('imgDetail'),
@@ -35,7 +37,7 @@ function createImgs() {
         { id: 12, url: "img/12.jpg", keywords: ['actor'] },
         { id: 13, url: "img/13.jpg", keywords: ['politics'] },
         { id: 14, url: "img/14.jpg", keywords: ['baby'] },
-        { id: 15, url: "img/15.jpg", keywords: ['dog'] },
+        { id: 15, url: "img/15.jpg", keywords: ['dogs'] },
         { id: 16, url: "img/16.jpg", keywords: ['politics'] },
         { id: 17, url: "img/17.jpg", keywords: ['kissing'] },
         { id: 18, url: "img/18.jpg", keywords: ['actor'] },
@@ -48,6 +50,8 @@ function createImgs() {
     ]
 }
 
+
+
 function getGalleryImgs (){
     return gImgs
 }
@@ -56,3 +60,50 @@ function getImg(currId){
     saveToStorage('imgDetail',currId)
     window.open("editor.html","_self"); 
 }
+
+function createKeyWords() {
+    return {
+        'crazy': 2,
+        'dancing': 1,
+        'nature': 1,
+        'kissing': 1,
+        'dogs': 3,
+        'baby': 3,
+        'cats': 1,
+        'actor': 3,
+        'politics': 4,
+        'movie': 4,
+    }
+}
+
+
+function getKeyWords() {
+    return gKeyWords;
+}
+
+function setFilter(txt) {
+    gFilterBy = txt;
+}
+function getImgsForDisplay() {
+    if (!gFilterBy) return gImgs;
+    var myRe = new RegExp('^' + `${gFilterBy}`, 'i');
+    var filterImages = gImgs.filter(function (img) {
+        return myRe.exec(img.keywords);
+    })
+    return filterImages;
+}
+
+
+
+
+// function imgsMap() {
+//     return gImgs.reduce(function (key, img) {
+//         for (var i = 0; i < img.keywords.length; i++) {
+//             if (!key[img.keywords[i]]) key[img.keywords[i]] = img.url;
+//             else key[img.keywords[i]] += img.url;
+//         }
+//         return key;
+//     }, {})
+// }
+
+

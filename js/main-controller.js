@@ -3,6 +3,7 @@
 
 function init() {
     renderGalleryImgs();
+    renderKeyWords();
 }
 
 
@@ -98,4 +99,20 @@ function onAlignText(pos) {
 function onEditTxtStyle(txtStyle) {
     editTxtStyle(txtStyle);
     renderCanvas();
+}
+
+
+//////// galerry filter/////
+function renderKeyWords() {
+    let currKeyWords = getKeyWords();
+    let strHtml = ''
+    for (let currKey in currKeyWords) {
+        let currValue = currKeyWords[currKey];
+        let wordSize = currValue * 1 + 'rem';
+        strHtml += `<li  onclick="onFilterByKeyWord('${currKey}')" style="font-size:${wordSize}">${currKey}</li>`
+    }
+    document.querySelector('.filter-bar').innerHTML = strHtml
+    console.log(currKeyWords);
+
+    
 }
